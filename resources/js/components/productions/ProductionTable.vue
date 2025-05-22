@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { Table, TableBody, TableCell, TableEmpty, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Source } from '@/types/source';
+import { Production } from '@/types/production';
 import { Badge } from '../ui/badge';
 
-const props = defineProps<{ sources: Source[] }>();
+const props = defineProps<{ productions: Production[] }>();
 </script>
 
 <template>
@@ -16,8 +16,8 @@ const props = defineProps<{ sources: Source[] }>();
             </TableRow>
         </TableHeader>
         <TableBody>
-            <template v-if="props.sources.length > 0">
-                <TableRow v-for="source in props.sources" :key="source.id">
+            <template v-if="props.productions.length > 0">
+                <TableRow v-for="source in props.productions" :key="source.id">
                     <TableCell class="font-medium">
                         <div>
                             {{ source.name }}
