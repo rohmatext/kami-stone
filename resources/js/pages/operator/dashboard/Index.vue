@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import ProductionTable from '@/components/dashboard/ProductionTable.vue';
+import ProductionTypeTable from '@/components/dashboard/ProductionTypeTable.vue';
 import ShipmentTable from '@/components/dashboard/ShipmentTable.vue';
 import CreateProductionSheet from '@/components/productions/CreateProductionSheet.vue';
 import CreateShipmentSheet from '@/components/shipments/CreateShipmentSheet.vue';
@@ -127,7 +128,7 @@ const onShipmentCreatedSuccess = () => {
                                 <div class="flex flex-row items-center justify-between">
                                     <CardTitle>Produksi Hari ini</CardTitle>
                                     <Button variant="secondary" as-child>
-                                        <Link :href="route('operator.productions.index')" class="text-sm"> Lihat semua </Link>
+                                        <Link :href="route('operator.productions.index')" class="text-sm"> Produksi </Link>
                                     </Button>
                                 </div>
                             </CardHeader>
@@ -136,13 +137,24 @@ const onShipmentCreatedSuccess = () => {
                             </CardContent>
                         </Card>
                     </div>
-                    <div class="flex-1">
+                    <BlockStack class="flex-1">
+                        <Card class="gap-4 pt-6">
+                            <CardHeader class="px-4 pb-0">
+                                <div class="flex flex-row items-center justify-between">
+                                    <CardTitle>Produksi hari ini (jenis)</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent class="border-t px-0">
+                                <ProductionTypeTable :productions="props.productions" :types="props.types" />
+                            </CardContent>
+                        </Card>
+
                         <Card class="gap-2 pt-3">
                             <CardHeader class="px-4 pb-0">
                                 <div class="flex flex-row items-center justify-between">
                                     <CardTitle>Pengiriman terbaru</CardTitle>
                                     <Button variant="secondary" as-child>
-                                        <Link :href="route('operator.shipments.index')" class="text-sm"> Lihat semua </Link>
+                                        <Link :href="route('operator.shipments.index')" class="text-sm"> Pengiriman </Link>
                                     </Button>
                                 </div>
                             </CardHeader>
@@ -150,7 +162,7 @@ const onShipmentCreatedSuccess = () => {
                                 <ShipmentTable :shipments="props.shipments" />
                             </CardContent>
                         </Card>
-                    </div>
+                    </BlockStack>
                 </BlockStack>
             </BlockStack>
         </Page>

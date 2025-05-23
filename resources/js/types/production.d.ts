@@ -5,6 +5,7 @@ export interface Production {
     source_id: number;
     production_date: string;
     quantity: number;
+    type: string;
     notes: string | null;
     source?: Source;
     created_at: string;
