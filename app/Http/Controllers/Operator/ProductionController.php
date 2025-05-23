@@ -7,15 +7,19 @@ use App\Http\Requests\Productions\StoreProductionRequest;
 use App\Http\Requests\Productions\UpdateProductionRequest;
 use App\Models\Production;
 use App\Services\ProductionService;
+use App\Services\SourceService;
 use Carbon\Carbon;
+use Carbon\CarbonImmutable;
 use Carbon\CarbonPeriodImmutable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class ProductionController extends Controller
 {
     public function __construct(
-        protected ProductionService $productionService
+        protected ProductionService $productionService,
+        protected SourceService $sourceService
     ) {
         //        
     }
@@ -24,9 +28,12 @@ class ProductionController extends Controller
      */
     public function index()
     {
-        return $this->productionService->getAllProductions();
+        $productions = $this->productionService->getMonthlyProductionsTimeline();
+
         return Inertia::render('operator/production/Index', [
-            'productions' => $this->productionService->getAllProductions(),
+            'productions' => $productions,
+            'sources' => $this->sourceService->getAllSources(true),
+            'period' => $this->productionService->transformRequestPeriod()
         ]);
     }
 
@@ -35,7 +42,10 @@ class ProductionController extends Controller
      */
     public function store(StoreProductionRequest $request)
     {
-        //
+        DB::transaction(function () use ($request) {
+            $this->productionService->createProduction($request->all());
+            session()->flash('message', 'Data berhasil disimpan');
+        });
     }
 
     /**

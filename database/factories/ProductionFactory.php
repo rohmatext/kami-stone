@@ -19,7 +19,7 @@ class ProductionFactory extends Factory
     {
         return [
             'source_id' => Source::inRandomOrder()->first()->id,
-            'production_date' => today()->subDays(fake()->numberBetween(1, 30)),
+            'production_date' => today()->subDays(fake()->numberBetween(0, 30)),
             'quantity' => fake()->numberBetween(1, 20),
             'notes' => fake()->boolean() ? fake()->sentence() : null,
         ];

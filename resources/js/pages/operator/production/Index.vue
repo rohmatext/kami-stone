@@ -1,14 +1,68 @@
 <script setup lang="ts">
+import CreateProductionSheet from '@/components/productions/CreateProductionSheet.vue';
+import ProductionTable from '@/components/productions/ProductionTable.vue';
 import { Button } from '@/components/ui/button';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Page } from '@/components/ui/page';
+import { BlockStack, Page } from '@/components/ui/page';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { Head } from '@inertiajs/vue3';
-import { ref } from 'vue';
+import { SharedData } from '@/types';
+import { ProductionTimeline } from '@/types/production';
+import { Source } from '@/types/source';
+import { Head, router } from '@inertiajs/vue3';
+import { reactive, watch } from 'vue';
+import { toast } from 'vue-sonner';
 
-const handleShowCreate = () => {};
+const props = defineProps<
+    SharedData & {
+        productions: ProductionTimeline[];
+        sources: Source[];
+        period: {
+            month: number;
+            year: number;
+        };
+    }
+>();
 
-const opens = ref<boolean[]>([false, false, false, false, false]);
+const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+const years = Array.from({ length: new Date().getFullYear() - 2024 + 1 }, (_, index) => 2024 + index);
+
+const period = reactive<{
+    month: number;
+    year: number;
+}>({
+    month: Number(props.period.month),
+    year: Number(props.period.year),
+});
+
+const open = reactive<{
+    create: boolean;
+}>({
+    create: false,
+});
+
+const updatePeriod = () => {
+    router.get(
+        route('operator.productions.index'),
+        {
+            period: `${period.year}-${String(period.month).padStart(2, '0')}`,
+        },
+        {
+            preserveScroll: true,
+            preserveState: true,
+        },
+    );
+};
+
+const handleShowCreate = () => {
+    open.create = true;
+};
+
+const onCreatedSuccess = () => {
+    open.create = false;
+    toast.success(props.flash.message);
+};
+
+watch(() => period, updatePeriod, { deep: true });
 </script>
 
 <template>
@@ -20,10 +74,41 @@ const opens = ref<boolean[]>([false, false, false, false, false]);
                 <Button @click="handleShowCreate">Tambah</Button>
             </template>
 
-            <Collapsible v-for="(_, index) in opens" v-model:open="opens[index]" :key="index">
-                <CollapsibleTrigger>Can I use this in my project? {{ index }}</CollapsibleTrigger>
-                <CollapsibleContent> Yes. Free to use for personal and commercial projects. No attribution required. </CollapsibleContent>
-            </Collapsible>
+            <BlockStack>
+                <div class="rounded-lg border">
+                    <BlockStack class="flex-row gap-2 border-b p-2">
+                        <div>
+                            <Select v-model="period.month">
+                                <SelectTrigger class="w-32">
+                                    <SelectValue placeholder="Pilih Bulan" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem v-for="(row, index) in months" :key="index" :value="index + 1"> {{ row }} </SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                        <div>
+                            <Select v-model="period.year">
+                                <SelectTrigger class="w-24">
+                                    <SelectValue placeholder="Pilih Tahun" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem v-for="(row, index) in years" :key="index" :value="row"> {{ row }} </SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </BlockStack>
+
+                    <ProductionTable :productions="props.productions" />
+                </div>
+            </BlockStack>
         </Page>
+
+        <CreateProductionSheet
+            v-model="open.create"
+            :sources="props.sources"
+            :route="route('operator.productions.store')"
+            @success="onCreatedSuccess"
+        />
     </AppLayout>
 </template>

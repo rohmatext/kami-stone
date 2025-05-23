@@ -11,3 +11,9 @@ export interface Production {
     updated_at: string;
     [key: string]: unknown;
 }
+
+export interface ProductionTimeline {
+    date: string;
+    total: number;
+    productions: Production[];
+}
