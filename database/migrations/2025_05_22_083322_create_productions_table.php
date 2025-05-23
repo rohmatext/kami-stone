@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('source_id')->constrained('sources')->cascadeOnDelete();
             $table->date('production_date');
+            $table->string('type');
             $table->unsignedInteger('quantity');
             $table->string('notes')->nullable();
             $table->timestamps();

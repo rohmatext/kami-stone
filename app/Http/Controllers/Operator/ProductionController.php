@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Operator;
 
+use App\Enums\ProductionTypeEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Productions\StoreProductionRequest;
 use App\Http\Requests\Productions\UpdateProductionRequest;
@@ -32,6 +33,7 @@ class ProductionController extends Controller
 
         return Inertia::render('operator/production/Index', [
             'productions' => $productions,
+            'types' => ProductionTypeEnum::values(),
             'sources' => $this->sourceService->getAllSources(true),
             'period' => $this->productionService->transformRequestPeriod()
         ]);
@@ -43,7 +45,7 @@ class ProductionController extends Controller
     public function store(StoreProductionRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $this->productionService->createProduction($request->all());
+            $this->productionService->createProduction($request->validated());
             session()->flash('message', 'Data berhasil disimpan');
         });
     }

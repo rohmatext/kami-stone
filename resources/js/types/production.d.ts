@@ -17,3 +17,8 @@ export interface ProductionTimeline {
     total: number;
     productions: Production[];
 }
+
+export interface ProductionType {
+    value: string;
+    label: string;
+}

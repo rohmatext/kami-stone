@@ -1,7 +1,7 @@
 import { queryParams, type QueryParams } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:29
+ * @see app/Http/Controllers/Operator/ProductionController.php:30
  * @route '/operator/productions'
  */
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -19,7 +19,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:29
+ * @see app/Http/Controllers/Operator/ProductionController.php:30
  * @route '/operator/productions'
  */
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -28,7 +28,7 @@ index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:29
+ * @see app/Http/Controllers/Operator/ProductionController.php:30
  * @route '/operator/productions'
  */
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -40,7 +40,7 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 })
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:29
+ * @see app/Http/Controllers/Operator/ProductionController.php:30
  * @route '/operator/productions'
  */
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -53,7 +53,7 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:43
+ * @see app/Http/Controllers/Operator/ProductionController.php:45
  * @route '/operator/productions'
  */
 export const store = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -71,7 +71,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:43
+ * @see app/Http/Controllers/Operator/ProductionController.php:45
  * @route '/operator/productions'
  */
 store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -80,7 +80,7 @@ store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:43
+ * @see app/Http/Controllers/Operator/ProductionController.php:45
  * @route '/operator/productions'
  */
 store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -93,7 +93,7 @@ store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:54
+ * @see app/Http/Controllers/Operator/ProductionController.php:56
  * @route '/operator/productions/{production}'
  */
 export const update = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -111,7 +111,7 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:54
+ * @see app/Http/Controllers/Operator/ProductionController.php:56
  * @route '/operator/productions/{production}'
  */
 update.url = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -142,7 +142,7 @@ update.url = (args: { production: number | { id: number } } | [production: numbe
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:54
+ * @see app/Http/Controllers/Operator/ProductionController.php:56
  * @route '/operator/productions/{production}'
  */
 update.patch = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

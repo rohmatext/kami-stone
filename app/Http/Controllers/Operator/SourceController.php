@@ -34,7 +34,7 @@ class SourceController extends Controller
     public function store(StoreSourceRequest $request)
     {
         DB::transaction(function () use ($request) {
-            $this->sourceService->createSource($request->all());
+            $this->sourceService->createSource($request->validated());
 
             return to_route('operator.sources.index')->withMessage('Source berhasil ditambahkan');
         });
@@ -46,7 +46,7 @@ class SourceController extends Controller
     public function update(UpdateSourceRequest $request, Source $source)
     {
         DB::transaction(function () use ($request, $source) {
-            $this->sourceService->updateSource($source, $request->all());
+            $this->sourceService->updateSource($source, $request->validated());
 
             return to_route('operator.sources.index')->withMessage('Source berhasil diubah');
         });

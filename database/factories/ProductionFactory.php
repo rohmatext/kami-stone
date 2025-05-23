@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\ProductionTypeEnum;
 use App\Models\Source;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,7 @@ class ProductionFactory extends Factory
         return [
             'source_id' => Source::inRandomOrder()->first()->id,
             'production_date' => today()->subDays(fake()->numberBetween(0, 30)),
+            'type' => fake()->randomElement(array_column(ProductionTypeEnum::cases(), 'value')),
             'quantity' => fake()->numberBetween(1, 20),
             'notes' => fake()->boolean() ? fake()->sentence() : null,
         ];

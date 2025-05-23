@@ -14,6 +14,7 @@ class Production extends Model
     protected $fillable = [
         'source_id',
         'production_date',
+        'type',
         'quantity',
         'notes'
     ];

@@ -6,7 +6,7 @@ import { BlockStack, Page } from '@/components/ui/page';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import AppLayout from '@/layouts/AppLayout.vue';
 import { SharedData } from '@/types';
-import { ProductionTimeline } from '@/types/production';
+import { ProductionTimeline, ProductionType } from '@/types/production';
 import { Source } from '@/types/source';
 import { Head, router } from '@inertiajs/vue3';
 import { reactive, watch } from 'vue';
@@ -16,6 +16,7 @@ const props = defineProps<
     SharedData & {
         productions: ProductionTimeline[];
         sources: Source[];
+        types: ProductionType[];
         period: {
             month: number;
             year: number;
@@ -107,6 +108,7 @@ watch(() => period, updatePeriod, { deep: true });
         <CreateProductionSheet
             v-model="open.create"
             :sources="props.sources"
+            :types="props.types"
             :route="route('operator.productions.store')"
             @success="onCreatedSuccess"
         />

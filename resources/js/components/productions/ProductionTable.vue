@@ -43,13 +43,19 @@ const isExpanded = ref<boolean[]>(props.productions.map(() => false));
                                 <TableHeader>
                                     <TableRow>
                                         <TableHead>Sumber</TableHead>
-                                        <TableHead class="text-right">Jumlah</TableHead>
+                                        <TableHead class="w-12">Jenis</TableHead>
+                                        <TableHead class="w-8 text-right">Jumlah</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
                                     <TableRow v-for="col in row.productions" class="border-secondary border-dashed" :key="col.id">
                                         <TableCell class="p-2 text-left">
                                             {{ col.source?.name }}
+                                        </TableCell>
+                                        <TableCell class="p-2">
+                                            <Badge variant="secondary">
+                                                {{ col.type }}
+                                            </Badge>
                                         </TableCell>
                                         <TableCell class="p-2 text-right">
                                             {{ col.quantity }}

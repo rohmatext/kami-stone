@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Productions;
 
+use App\Enums\ProductionTypeEnum;
 use App\Models\Source;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -34,6 +35,10 @@ class StoreProductionRequest extends FormRequest
                 'required',
                 'numeric',
                 'min:1'
+            ],
+            'type' => [
+                'required',
+                Rule::in(array_column(ProductionTypeEnum::cases(), 'value'))
             ],
             'notes' => [
                 'nullable',
