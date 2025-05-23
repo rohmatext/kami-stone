@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Shipment;
 
+use App\Models\Production;
+use App\Models\Shipment;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreShipmentRequest extends FormRequest
@@ -22,7 +24,12 @@ class StoreShipmentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'quantity' => ['required', 'numeric', 'min:1'],
+            'quantity' => ['required', 'numeric', 'min:1', function ($attribute, $value, $fail) {
+                $max = Production::query()->sum('quantity') - Shipment::query()->sum('quantity');
+                if ($value > $max) {
+                    $fail(__('validation.max.numeric', ['attribute' => $attribute, 'max' => $max]));
+                }
+            }],
             'notes' => ['nullable', 'string', 'max:255'],
         ];
     }

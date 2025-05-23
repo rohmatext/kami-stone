@@ -63,11 +63,17 @@ class ProductionService
             ]);
     }
 
+    public function getTotalProductions()
+    {
+        return Production::query()
+            ->sum('quantity');
+    }
+
     public function transformRequestPeriod()
     {
         try {
-            $period = request('period');
-            [$year, $month] = explode('-', $period);
+            $period = request()->query('period', today()->format('Y-m'));
+            [$year, $month] = explode('-', $period, 2);
 
             return [
                 'year' => $year,
@@ -85,6 +91,7 @@ class ProductionService
     {
         return Production::create([
             'source_id' => $data['source_id'],
+            'type' => $data['type'],
             'production_date' => $data['production_date'] ?? today(),
             'quantity' => $data['quantity'],
             'notes' => $data['notes'] ?? null,

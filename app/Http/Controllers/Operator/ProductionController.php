@@ -8,6 +8,7 @@ use App\Http\Requests\Productions\StoreProductionRequest;
 use App\Http\Requests\Productions\UpdateProductionRequest;
 use App\Models\Production;
 use App\Services\ProductionService;
+use App\Services\ShipmentService;
 use App\Services\SourceService;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
@@ -20,7 +21,8 @@ class ProductionController extends Controller
 {
     public function __construct(
         protected ProductionService $productionService,
-        protected SourceService $sourceService
+        protected SourceService $sourceService,
+        protected ShipmentService $shipmentService
     ) {
         //        
     }
@@ -35,7 +37,11 @@ class ProductionController extends Controller
             'productions' => $productions,
             'types' => ProductionTypeEnum::values(),
             'sources' => $this->sourceService->getAllSources(true),
-            'period' => $this->productionService->transformRequestPeriod()
+            'period' => $this->productionService->transformRequestPeriod(),
+            'total' => [
+                'productions' => $this->productionService->getTotalProductions(),
+                'shipments' => $this->shipmentService->getTotalShipments(),
+            ],
         ]);
     }
 

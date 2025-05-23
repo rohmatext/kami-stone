@@ -24,6 +24,12 @@ class ShipmentService
             ->get();
     }
 
+    public function getTotalShipments()
+    {
+        return Shipment::query()
+            ->sum('quantity');
+    }
+
     /**
      * Create a new shipment.
      */
