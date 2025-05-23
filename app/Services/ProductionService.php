@@ -24,6 +24,16 @@ class ProductionService
             ->get();
     }
 
+    public function getTodayProductions()
+    {
+        return Production::query()
+            ->with('source')
+            ->whereDate('production_date', today())
+            ->orderByDesc('production_date')
+            ->orderByDesc('id')
+            ->get();
+    }
+
     public function getMonthlyProductions()
     {
         $period = $this->transformRequestPeriod();

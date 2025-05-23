@@ -24,6 +24,14 @@ class ShipmentService
             ->get();
     }
 
+    public function getLastShipments()
+    {
+        return Shipment::query()
+            ->latest('created_at')
+            ->limit(10)
+            ->get();
+    }
+
     public function getTotalShipments()
     {
         return Shipment::query()
