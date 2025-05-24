@@ -1,8 +1,8 @@
 import { queryParams, type QueryParams } from './../../../../../wayfinder'
 /**
-* @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
+* @see \App\Http\Controllers\Admin\ShipmentController::index
+ * @see app/Http/Controllers/Admin/ShipmentController.php:18
+ * @route '/admin/shipments'
  */
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
@@ -14,22 +14,22 @@ export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams 
 
 index.definition = {
     methods: ['get','head'],
-    url: '/admin',
+    url: '/admin/shipments',
 }
 
 /**
-* @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
+* @see \App\Http\Controllers\Admin\ShipmentController::index
+ * @see app/Http/Controllers/Admin/ShipmentController.php:18
+ * @route '/admin/shipments'
  */
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
-* @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
+* @see \App\Http\Controllers\Admin\ShipmentController::index
+ * @see app/Http/Controllers/Admin/ShipmentController.php:18
+ * @route '/admin/shipments'
  */
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
@@ -39,9 +39,9 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     method: 'get',
 })
 /**
-* @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
+* @see \App\Http\Controllers\Admin\ShipmentController::index
+ * @see app/Http/Controllers/Admin/ShipmentController.php:18
+ * @route '/admin/shipments'
  */
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
@@ -50,6 +50,6 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'head',
 })
-const DashboardController = { index }
+const ShipmentController = { index }
 
-export default DashboardController
+export default ShipmentController

@@ -13,7 +13,9 @@ class ShipmentController extends Controller
 {
     public function __construct(
         protected ShipmentService $shipmentService
-    ) {}
+    ) {
+        //
+    }
     /**
      * Display a listing of the resource.
      */

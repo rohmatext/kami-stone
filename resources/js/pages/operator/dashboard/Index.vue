@@ -1,20 +1,20 @@
 <script setup lang="ts">
+import DashboardCards from '@/components/dashboard/DashboardCards.vue';
+import DashboardTableCard from '@/components/dashboard/DashboardTableCard.vue';
 import ProductionTable from '@/components/dashboard/ProductionTable.vue';
 import ProductionTypeTable from '@/components/dashboard/ProductionTypeTable.vue';
 import ShipmentTable from '@/components/dashboard/ShipmentTable.vue';
 import CreateProductionSheet from '@/components/productions/CreateProductionSheet.vue';
 import CreateShipmentSheet from '@/components/shipments/CreateShipmentSheet.vue';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BlockStack, Page } from '@/components/ui/page';
 import AppLayout from '@/layouts/AppLayout.vue';
-import { nf } from '@/lib/utils';
 import { SharedData } from '@/types';
 import { Production, ProductionType } from '@/types/production';
 import { Shipment } from '@/types/shipment';
 import { Source } from '@/types/source';
-import { Head, Link } from '@inertiajs/vue3';
-import { Pickaxe, ShoppingBag, Truck } from 'lucide-vue-next';
+import { Head } from '@inertiajs/vue3';
+import { Grid2x2Plus, PackagePlus } from 'lucide-vue-next';
 import { reactive } from 'vue';
 import { toast } from 'vue-sonner';
 
@@ -58,110 +58,37 @@ const onShipmentCreatedSuccess = () => {
         <Page title="Dashboard" max-width="lg">
             <template #actions>
                 <Button class="cursor-pointer" variant="secondary" @click="handleShowCreate('shipment')">
-                    <Truck />
+                    <PackagePlus />
                     Pengiriman
                 </Button>
                 <Button class="cursor-pointer" variant="default" @click="handleShowCreate('production')">
-                    <Pickaxe />
+                    <Grid2x2Plus />
                     Produksi
                 </Button>
             </template>
 
             <BlockStack>
-                <BlockStack class="-mx-2 flex-row flex-wrap gap-0">
-                    <div class="w-1/2 p-2 lg:w-1/4">
-                        <Card class="gap-0">
-                            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle class="text-sm font-medium">Tersedia</CardTitle>
-                                <ShoppingBag class="text-muted-foreground size-5" />
-                            </CardHeader>
-                            <CardContent>
-                                <div class="text-2xl font-bold">{{ nf(props.total.productions - props.total.shipments) }}</div>
-                                <p class="text-muted-foreground text-xs">Karung</p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    <div class="w-1/2 p-2 lg:w-1/4">
-                        <Card class="gap-0">
-                            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle class="text-sm font-medium">Produksi hari ini</CardTitle>
-                                <Pickaxe class="text-muted-foreground size-5" />
-                            </CardHeader>
-                            <CardContent>
-                                <div class="text-2xl font-bold">
-                                    {{ nf(props.productions.map((production) => production.quantity).reduce((a, b) => a + b, 0)) }}
-                                </div>
-                                <p class="text-muted-foreground text-xs">Karung</p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    <div class="w-1/2 p-2 lg:w-1/4">
-                        <Card class="gap-0">
-                            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle class="text-sm font-medium">Total pengiriman</CardTitle>
-                                <Truck class="text-muted-foreground size-5" />
-                            </CardHeader>
-                            <CardContent>
-                                <div class="text-2xl font-bold">{{ nf(props.total.shipments) }}</div>
-                                <p class="text-muted-foreground text-xs">Karung</p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                    <div class="w-1/2 p-2 lg:w-1/4">
-                        <Card class="gap-0">
-                            <CardHeader class="flex flex-row items-center justify-between space-y-0 pb-2">
-                                <CardTitle class="text-sm font-medium">Total produksi</CardTitle>
-                                <Pickaxe class="text-muted-foreground size-5" />
-                            </CardHeader>
-                            <CardContent>
-                                <div class="text-2xl font-bold">{{ nf(props.total.productions) }}</div>
-                                <p class="text-muted-foreground text-xs">Karung</p>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </BlockStack>
+                <DashboardCards v-bind="props" />
 
-                <BlockStack class="md:flex-row">
-                    <div class="flex-1">
-                        <Card class="gap-2 pt-3">
-                            <CardHeader class="px-4 pb-0">
-                                <div class="flex flex-row items-center justify-between">
-                                    <CardTitle>Produksi Hari ini</CardTitle>
-                                    <Button variant="secondary" as-child>
-                                        <Link :href="route('operator.productions.index')" class="text-sm"> Produksi </Link>
-                                    </Button>
-                                </div>
-                            </CardHeader>
-                            <CardContent class="border-t px-0">
-                                <ProductionTable :productions="props.productions" />
-                            </CardContent>
-                        </Card>
-                    </div>
+                <BlockStack class="lg:flex-row">
+                    <DashboardTableCard
+                        class="flex-1"
+                        title="Produksi hari ini"
+                        :navigation="{ label: 'Semua produksi', href: route('operator.productions.index') }"
+                    >
+                        <ProductionTable :productions="props.productions" />
+                    </DashboardTableCard>
+
                     <BlockStack class="flex-1">
-                        <Card class="gap-4 pt-6">
-                            <CardHeader class="px-4 pb-0">
-                                <div class="flex flex-row items-center justify-between">
-                                    <CardTitle>Produksi hari ini (jenis)</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent class="border-t px-0">
-                                <ProductionTypeTable :productions="props.productions" :types="props.types" />
-                            </CardContent>
-                        </Card>
-
-                        <Card class="gap-2 pt-3">
-                            <CardHeader class="px-4 pb-0">
-                                <div class="flex flex-row items-center justify-between">
-                                    <CardTitle>Pengiriman terbaru</CardTitle>
-                                    <Button variant="secondary" as-child>
-                                        <Link :href="route('operator.shipments.index')" class="text-sm"> Pengiriman </Link>
-                                    </Button>
-                                </div>
-                            </CardHeader>
-                            <CardContent class="border-t px-0">
-                                <ShipmentTable :shipments="props.shipments" />
-                            </CardContent>
-                        </Card>
+                        <DashboardTableCard title="Jenis produksi hari ini">
+                            <ProductionTypeTable :productions="props.productions" :types="props.types" />
+                        </DashboardTableCard>
+                        <DashboardTableCard
+                            title="Pengiriman terbaru"
+                            :navigation="{ label: 'Semua pengiriman', href: route('operator.shipments.index') }"
+                        >
+                            <ShipmentTable :shipments="props.shipments" />
+                        </DashboardTableCard>
                     </BlockStack>
                 </BlockStack>
             </BlockStack>

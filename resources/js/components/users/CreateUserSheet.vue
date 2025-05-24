@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import InputError from '@/components/InputError.vue';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -8,7 +9,6 @@ import { useSidebar } from '@/components/ui/sidebar';
 import { useForm } from '@inertiajs/vue3';
 import { LoaderCircle } from 'lucide-vue-next';
 import { computed } from 'vue';
-import InputError from '../InputError.vue';
 
 const open = defineModel<boolean>();
 const emit = defineEmits<{
@@ -36,7 +36,7 @@ const handleSubmit = () => {
 
 <template>
     <Sheet v-model:open="open">
-        <SheetContent class="lg:w-[400px]" :side="side">
+        <SheetContent class="pb-6 lg:w-[400px]" :side="side">
             <SheetHeader>
                 <SheetTitle>Tambah pengguna</SheetTitle>
                 <SheetDescription />
@@ -53,12 +53,12 @@ const handleSubmit = () => {
                         <Input id="email" v-model="form.email" />
                         <InputError :message="form.errors.email" />
                     </BlockStack>
-                    <div class="flex justify-end">
+                    <BlockStack class="gap-2 md:flex-row md:justify-end">
                         <Button type="submit" :disabled="form.processing">
                             <LoaderCircle v-if="form.processing" class="h-4 w-4 animate-spin" />
                             Simpan
                         </Button>
-                    </div>
+                    </BlockStack>
                 </BlockStack>
             </form>
         </SheetContent>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { Page } from '@/components/ui/page';
 import CreateUserSheet from '@/components/users/CreateUserSheet.vue';
 import UserTable from '@/components/users/UserTable.vue';
@@ -38,8 +39,13 @@ const onSaved = () => {
                 <Button @click="handleShowCreate">Tambah</Button>
             </template>
 
-            <UserTable :users="props.users" />
-            <CreateUserSheet v-model="show.create" @success="onSaved" />
+            <Card class="p-0">
+                <CardContent class="p-0">
+                    <UserTable :users="props.users" />
+                </CardContent>
+            </Card>
         </Page>
+
+        <CreateUserSheet v-model="show.create" @success="onSaved" />
     </AppLayout>
 </template>

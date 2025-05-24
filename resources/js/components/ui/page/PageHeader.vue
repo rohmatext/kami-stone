@@ -23,14 +23,14 @@ const label = computed<string>(() => {
     return props.backAction?.content || 'Go back';
 });
 
-const classes = cn(props.backAction != undefined ? `grid gap-x-4 gap-y-2 [grid-template-areas:'navigation_actions'_'title_title'] md:flex` : 'flex');
+const classes = cn(props.backAction != undefined ? `grid gap-x-4 gap-y-2 [grid-template-areas:'navigation_actions'_'title_title'] md:flex` : 'flex gap-4');
 </script>
 
 <template>
     <div class="relative p-4 sm:px-0 sm:py-6">
-        <div :class="cn('col-[auto_1fr] justify-between leading-normal', classes)">
-            <div class="[grid-area:navigation]">
-                <Button variant="ghost" size="icon" v-if="props.backAction" as-child>
+        <div :class="cn('flex-wrap col-[auto_1fr] justify-between leading-normal', classes)">
+            <div class="[grid-area:navigation]" v-if="props.backAction">
+                <Button variant="ghost" size="icon" as-child>
                     <Link :href="url" :aria-label="label">
                         <ArrowLeft class="size-5" />
                     </Link>
@@ -43,7 +43,7 @@ const classes = cn(props.backAction != undefined ? `grid gap-x-4 gap-y-2 [grid-t
                     </template>
                 </PageTitle>
             </div>
-            <div class="ml-4 flex flex-[1_1_auto] content-end items-center justify-end self-start whitespace-nowrap [grid-area:actions]">
+            <div class="flex flex-[1_1_auto] content-end items-center justify-end self-start whitespace-nowrap [grid-area:actions]">
                 <div class="flex w-full flex-wrap items-center justify-end gap-2 text-right">
                     <slot name="actions" />
                 </div>

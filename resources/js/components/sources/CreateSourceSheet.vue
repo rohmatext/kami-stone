@@ -10,6 +10,10 @@ import { LoaderCircle } from 'lucide-vue-next';
 import { computed } from 'vue';
 import InputError from '../InputError.vue';
 
+const props = defineProps<{
+    route: string;
+}>();
+
 const open = defineModel<boolean>();
 const emit = defineEmits<{
     success: [];
@@ -25,7 +29,7 @@ const form = useForm({
 });
 
 const handleSubmit = () => {
-    form.post(route('operator.sources.store'), {
+    form.post(props.route, {
         onSuccess: () => {
             form.reset();
             emit('success');

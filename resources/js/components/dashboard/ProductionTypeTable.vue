@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableEmpty, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { nf } from '@/lib/utils';
 import { Production, ProductionType } from '@/types/production';
 import { computed } from 'vue';
@@ -39,10 +39,13 @@ const groups = computed(() => groupByType(props.productions));
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow v-for="production in groups" :key="production.type">
-                <TableCell class="px-4 uppercase">{{ production.type }}</TableCell>
-                <TableCell class="px-4 text-right">{{ nf(production.quantity) }}</TableCell>
-            </TableRow>
+            <template v-if="groups.length > 0">
+                <TableRow v-for="production in groups" :key="production.type">
+                    <TableCell class="px-4 uppercase">{{ production.type }}</TableCell>
+                    <TableCell class="px-4 text-right">{{ nf(production.quantity) }}</TableCell>
+                </TableRow>
+            </template>
+            <TableEmpty v-else :colspan="2"> Tidak ada data </TableEmpty>
         </TableBody>
     </Table>
 </template>

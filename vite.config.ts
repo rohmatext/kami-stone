@@ -7,6 +7,7 @@ import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    server: { cors: true },
     plugins: [
         wayfinder(),
         laravel({

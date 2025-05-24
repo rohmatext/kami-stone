@@ -10,26 +10,27 @@ use App\Services\SourceService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class DashboardController extends Controller
+class ProductionController extends Controller
 {
     public function __construct(
         protected ProductionService $productionService,
-        protected ShipmentService $shipmentService,
-        protected SourceService $sourceService
+        protected SourceService $sourceService,
+        protected ShipmentService $shipmentService
     ) {
-        //
+        //        
     }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('admin/dashboard/Index', [
-            'productions' => $this->productionService->getTodayProductions(),
-            'shipments' => $this->shipmentService->getLastShipments(),
-            'sources' => $this->sourceService->getAllSources(true),
+        $productions = $this->productionService->getMonthlyProductionsTimeline();
+
+        return Inertia::render('admin/production/Index', [
+            'productions' => $productions,
             'types' => ProductionTypeEnum::values(),
+            'sources' => $this->sourceService->getAllSources(true),
+            'period' => $this->productionService->transformRequestPeriod(),
             'total' => [
                 'productions' => $this->productionService->getTotalProductions(),
                 'shipments' => $this->shipmentService->getTotalShipments(),

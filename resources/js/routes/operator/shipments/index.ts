@@ -1,7 +1,7 @@
 import { queryParams, type QueryParams } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:20
+ * @see app/Http/Controllers/Operator/ShipmentController.php:22
  * @route '/operator/shipments'
  */
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -19,7 +19,7 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:20
+ * @see app/Http/Controllers/Operator/ShipmentController.php:22
  * @route '/operator/shipments'
  */
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -28,7 +28,7 @@ index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:20
+ * @see app/Http/Controllers/Operator/ShipmentController.php:22
  * @route '/operator/shipments'
  */
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -40,7 +40,7 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 })
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:20
+ * @see app/Http/Controllers/Operator/ShipmentController.php:22
  * @route '/operator/shipments'
  */
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -53,7 +53,7 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:30
+ * @see app/Http/Controllers/Operator/ShipmentController.php:32
  * @route '/operator/shipments'
  */
 export const store = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
@@ -71,7 +71,7 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:30
+ * @see app/Http/Controllers/Operator/ShipmentController.php:32
  * @route '/operator/shipments'
  */
 store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
@@ -80,7 +80,7 @@ store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:30
+ * @see app/Http/Controllers/Operator/ShipmentController.php:32
  * @route '/operator/shipments'
  */
 store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {

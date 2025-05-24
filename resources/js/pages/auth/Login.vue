@@ -6,12 +6,19 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthBase from '@/layouts/AuthLayout.vue';
 import { Head, useForm } from '@inertiajs/vue3';
-import { LoaderCircle } from 'lucide-vue-next';
+import { Eye, EyeOff, LoaderCircle } from 'lucide-vue-next';
+import { reactive } from 'vue';
 
 defineProps<{
     status?: string;
     canResetPassword: boolean;
 }>();
+
+const toggle = reactive<{
+    password: boolean;
+}>({
+    password: false,
+});
 
 const form = useForm({
     email: '',
@@ -53,15 +60,29 @@ const submit = () => {
 
                 <div class="grid gap-2">
                     <Label for="password">Password</Label>
-                    <Input
-                        id="password"
-                        type="password"
-                        required
-                        :tabindex="2"
-                        autocomplete="current-password"
-                        v-model="form.password"
-                        placeholder="Password"
-                    />
+                    <div class="relative">
+                        <Input
+                            id="password"
+                            :type="toggle.password ? 'text' : 'password'"
+                            required
+                            :tabindex="2"
+                            autocomplete="current-password"
+                            v-model="form.password"
+                            placeholder="Password"
+                            class="pr-9"
+                        />
+                        <Button
+                            class="absolute top-1/2 right-0.5 size-8 -translate-y-1/2"
+                            type="button"
+                            tabindex="-1"
+                            variant="ghost"
+                            size="icon"
+                            @click="toggle.password = !toggle.password"
+                        >
+                            <Eye v-if="!toggle.password" />
+                            <EyeOff v-else />
+                        </Button>
+                    </div>
                     <InputError :message="form.errors.password" />
                 </div>
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Badge } from '@/components/ui/badge';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableEmpty, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { nf } from '@/lib/utils';
 import { Production } from '@/types/production';
 
@@ -17,13 +17,16 @@ const props = defineProps<{ productions: Production[] }>();
             </TableRow>
         </TableHeader>
         <TableBody>
-            <TableRow v-for="production in props.productions" :key="production.id">
-                <TableCell class="px-4">{{ production.source?.name }}</TableCell>
-                <TableCell class="px-4 text-center">
-                    <Badge variant="secondary">{{ production.type }}</Badge>
-                </TableCell>
-                <TableCell class="px-4 text-right">{{ nf(production.quantity) }}</TableCell>
-            </TableRow>
+            <template v-if="props.productions.length > 0">
+                <TableRow v-for="production in props.productions" :key="production.id">
+                    <TableCell class="px-4">{{ production.source?.name }}</TableCell>
+                    <TableCell class="px-4 text-center">
+                        <Badge variant="secondary">{{ production.type }}</Badge>
+                    </TableCell>
+                    <TableCell class="px-4 text-right">{{ nf(production.quantity) }}</TableCell>
+                </TableRow>
+            </template>
+            <TableEmpty v-else :colspan="3"> Tidak ada data </TableEmpty>
         </TableBody>
     </Table>
 </template>

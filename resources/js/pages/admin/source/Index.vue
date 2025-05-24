@@ -75,10 +75,10 @@ const onInactivated = () => {
                 </CardContent>
             </Card>
 
-            <CreateSourceSheet :route="route('operator.sources.store')" v-model="show.create" @success="onCreated" />
-            <EditSourceSheet :route="route('operator.sources.update', { source: show.edit?.id || 0 })" v-model="show.edit" @success="onUpdated" />
+            <CreateSourceSheet :route="route('admin.sources.store')" v-model="show.create" @success="onCreated" />
+            <EditSourceSheet :route="route('admin.sources.update', { source: show.edit?.id || 0 })" v-model="show.edit" @success="onUpdated" />
             <InactiveSourceDialog
-                :route="route('operator.sources.inactivate', { source: show.inactive?.id || 0 })"
+                :route="route('admin.sources.inactivate', { source: show.inactive?.id || 0 })"
                 v-model="show.inactive"
                 @success="onInactivated"
             />

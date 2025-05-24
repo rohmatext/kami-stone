@@ -11,6 +11,10 @@ import { LoaderCircle } from 'lucide-vue-next';
 import { computed, toRef, watch } from 'vue';
 import InputError from '../InputError.vue';
 
+const props = defineProps<{
+    route: string;
+}>();
+
 const source = defineModel<Source | null>();
 const emit = defineEmits<{
     success: [];
@@ -33,7 +37,7 @@ const handleUpdateOpen = (value: boolean) => {
 };
 
 const handleSubmit = () => {
-    form.patch(route('operator.sources.update', { source: source.value }), {
+    form.patch(props.route, {
         onSuccess: () => {
             handleUpdateOpen(false);
             emit('success');
