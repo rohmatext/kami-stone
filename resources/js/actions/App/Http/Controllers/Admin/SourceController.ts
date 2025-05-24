@@ -1,9 +1,9 @@
 import { queryParams, type QueryParams } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\SourceController::index
- * @see app/Http/Controllers/Admin/SourceController.php:24
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:24
+* @route '/admin/sources'
+*/
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -19,18 +19,18 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::index
- * @see app/Http/Controllers/Admin/SourceController.php:24
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:24
+* @route '/admin/sources'
+*/
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::index
- * @see app/Http/Controllers/Admin/SourceController.php:24
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:24
+* @route '/admin/sources'
+*/
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -38,11 +38,12 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Admin\SourceController::index
- * @see app/Http/Controllers/Admin/SourceController.php:24
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:24
+* @route '/admin/sources'
+*/
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -53,9 +54,9 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::store
- * @see app/Http/Controllers/Admin/SourceController.php:34
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:34
+* @route '/admin/sources'
+*/
 export const store = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -71,18 +72,18 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::store
- * @see app/Http/Controllers/Admin/SourceController.php:34
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:34
+* @route '/admin/sources'
+*/
 store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return store.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::store
- * @see app/Http/Controllers/Admin/SourceController.php:34
- * @route '/admin/sources'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:34
+* @route '/admin/sources'
+*/
 store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -93,9 +94,9 @@ store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::update
- * @see app/Http/Controllers/Admin/SourceController.php:46
- * @route '/admin/sources/{source}'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:46
+* @route '/admin/sources/{source}'
+*/
 export const update = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -111,29 +112,29 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::update
- * @see app/Http/Controllers/Admin/SourceController.php:46
- * @route '/admin/sources/{source}'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:46
+* @route '/admin/sources/{source}'
+*/
 update.url = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { source: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { source: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { source: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    source: args[0],
-                }
+            source: args[0],
+        }
     }
 
     const parsedArgs = {
-                        source: typeof args.source === 'object'
-                ? args.source.id
-                : args.source,
-                }
+        source: typeof args.source === 'object'
+        ? args.source.id
+        : args.source,
+    }
 
     return update.definition.url
             .replace('{source}', parsedArgs.source.toString())
@@ -142,9 +143,9 @@ update.url = (args: { source: number | { id: number } } | [source: number | { id
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::update
- * @see app/Http/Controllers/Admin/SourceController.php:46
- * @route '/admin/sources/{source}'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:46
+* @route '/admin/sources/{source}'
+*/
 update.patch = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -155,9 +156,9 @@ update.patch = (args: { source: number | { id: number } } | [source: number | { 
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::inactivate
- * @see app/Http/Controllers/Admin/SourceController.php:55
- * @route '/admin/sources/{source}/inactivate'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:55
+* @route '/admin/sources/{source}/inactivate'
+*/
 export const inactivate = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -173,29 +174,29 @@ inactivate.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::inactivate
- * @see app/Http/Controllers/Admin/SourceController.php:55
- * @route '/admin/sources/{source}/inactivate'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:55
+* @route '/admin/sources/{source}/inactivate'
+*/
 inactivate.url = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { source: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { source: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { source: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    source: args[0],
-                }
+            source: args[0],
+        }
     }
 
     const parsedArgs = {
-                        source: typeof args.source === 'object'
-                ? args.source.id
-                : args.source,
-                }
+        source: typeof args.source === 'object'
+        ? args.source.id
+        : args.source,
+    }
 
     return inactivate.definition.url
             .replace('{source}', parsedArgs.source.toString())
@@ -204,9 +205,9 @@ inactivate.url = (args: { source: number | { id: number } } | [source: number | 
 
 /**
 * @see \App\Http\Controllers\Admin\SourceController::inactivate
- * @see app/Http/Controllers/Admin/SourceController.php:55
- * @route '/admin/sources/{source}/inactivate'
- */
+* @see app/Http/Controllers/Admin/SourceController.php:55
+* @route '/admin/sources/{source}/inactivate'
+*/
 inactivate.patch = (args: { source: number | { id: number } } | [source: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -214,6 +215,7 @@ inactivate.patch = (args: { source: number | { id: number } } | [source: number 
     url: inactivate.url(args, options),
     method: 'patch',
 })
+
 const SourceController = { index, store, update, inactivate }
 
 export default SourceController

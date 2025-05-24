@@ -1,9 +1,9 @@
 import { queryParams, type QueryParams } from './../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:32
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:32
+* @route '/operator/productions'
+*/
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -19,18 +19,18 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:32
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:32
+* @route '/operator/productions'
+*/
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:32
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:32
+* @route '/operator/productions'
+*/
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -38,11 +38,12 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::index
- * @see app/Http/Controllers/Operator/ProductionController.php:32
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:32
+* @route '/operator/productions'
+*/
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -53,9 +54,9 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:51
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:51
+* @route '/operator/productions'
+*/
 export const store = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -71,18 +72,18 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:51
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:51
+* @route '/operator/productions'
+*/
 store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return store.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::store
- * @see app/Http/Controllers/Operator/ProductionController.php:51
- * @route '/operator/productions'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:51
+* @route '/operator/productions'
+*/
 store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -93,9 +94,9 @@ store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:62
- * @route '/operator/productions/{production}'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:62
+* @route '/operator/productions/{production}'
+*/
 export const update = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -111,29 +112,29 @@ update.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:62
- * @route '/operator/productions/{production}'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:62
+* @route '/operator/productions/{production}'
+*/
 update.url = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { production: args }
     }
 
-            if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
-            args = { production: args.id }
-        }
-    
+    if (typeof args === 'object' && !Array.isArray(args) && 'id' in args) {
+        args = { production: args.id }
+    }
+
     if (Array.isArray(args)) {
         args = {
-                    production: args[0],
-                }
+            production: args[0],
+        }
     }
 
     const parsedArgs = {
-                        production: typeof args.production === 'object'
-                ? args.production.id
-                : args.production,
-                }
+        production: typeof args.production === 'object'
+        ? args.production.id
+        : args.production,
+    }
 
     return update.definition.url
             .replace('{production}', parsedArgs.production.toString())
@@ -142,9 +143,9 @@ update.url = (args: { production: number | { id: number } } | [production: numbe
 
 /**
 * @see \App\Http\Controllers\Operator\ProductionController::update
- * @see app/Http/Controllers/Operator/ProductionController.php:62
- * @route '/operator/productions/{production}'
- */
+* @see app/Http/Controllers/Operator/ProductionController.php:62
+* @route '/operator/productions/{production}'
+*/
 update.patch = (args: { production: number | { id: number } } | [production: number | { id: number } ] | number | { id: number }, options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -152,10 +153,11 @@ update.patch = (args: { production: number | { id: number } } | [production: num
     url: update.url(args, options),
     method: 'patch',
 })
+
 const productions = {
     index,
-store,
-update,
+    store,
+    update,
 }
 
 export default productions

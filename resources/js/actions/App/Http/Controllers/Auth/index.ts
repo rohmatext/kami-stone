@@ -1,4 +1,5 @@
 import AuthenticatedSessionController from './AuthenticatedSessionController'
+
 const Auth = {
     AuthenticatedSessionController,
 }

@@ -1,9 +1,9 @@
 import { queryParams, type QueryParams } from './../wayfinder'
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 export const home = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -19,18 +19,18 @@ home.definition = {
 
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return home.definition.url + queryParams(options)
 }
 
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -38,11 +38,12 @@ home.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'get',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -50,11 +51,12 @@ home.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'head',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -62,11 +64,12 @@ home.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'post',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.put = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'put',
@@ -74,11 +77,12 @@ home.put = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'put',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.patch = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'patch',
@@ -86,11 +90,12 @@ home.patch = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'patch',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.delete = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'delete',
@@ -98,11 +103,12 @@ home.delete = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: home.url(options),
     method: 'delete',
 })
+
 /**
 * @see \Illuminate\Routing\RedirectController::home
- * @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
- * @route '/'
- */
+* @see vendor/laravel/framework/src/Illuminate/Routing/RedirectController.php:19
+* @route '/'
+*/
 home.options = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'options',
@@ -112,9 +118,9 @@ home.options = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 })
 
 /**
- * @see routes/web.php:7
- * @route '/dashboard'
- */
+* @see routes/web.php:7
+* @route '/dashboard'
+*/
 export const dashboard = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -129,17 +135,17 @@ dashboard.definition = {
 }
 
 /**
- * @see routes/web.php:7
- * @route '/dashboard'
- */
+* @see routes/web.php:7
+* @route '/dashboard'
+*/
 dashboard.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return dashboard.definition.url + queryParams(options)
 }
 
 /**
- * @see routes/web.php:7
- * @route '/dashboard'
- */
+* @see routes/web.php:7
+* @route '/dashboard'
+*/
 dashboard.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -147,10 +153,11 @@ dashboard.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: dashboard.url(options),
     method: 'get',
 })
+
 /**
- * @see routes/web.php:7
- * @route '/dashboard'
- */
+* @see routes/web.php:7
+* @route '/dashboard'
+*/
 dashboard.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -160,9 +167,9 @@ dashboard.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): 
 })
 
 /**
- * @see routes/settings.php:18
- * @route '/settings/appearance'
- */
+* @see routes/settings.php:18
+* @route '/settings/appearance'
+*/
 export const appearance = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -177,17 +184,17 @@ appearance.definition = {
 }
 
 /**
- * @see routes/settings.php:18
- * @route '/settings/appearance'
- */
+* @see routes/settings.php:18
+* @route '/settings/appearance'
+*/
 appearance.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return appearance.definition.url + queryParams(options)
 }
 
 /**
- * @see routes/settings.php:18
- * @route '/settings/appearance'
- */
+* @see routes/settings.php:18
+* @route '/settings/appearance'
+*/
 appearance.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -195,10 +202,11 @@ appearance.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): 
     url: appearance.url(options),
     method: 'get',
 })
+
 /**
- * @see routes/settings.php:18
- * @route '/settings/appearance'
- */
+* @see routes/settings.php:18
+* @route '/settings/appearance'
+*/
 appearance.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -209,9 +217,9 @@ appearance.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }):
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
- * @route '/login'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
+* @route '/login'
+*/
 export const login = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -227,18 +235,18 @@ login.definition = {
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
- * @route '/login'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
+* @route '/login'
+*/
 login.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return login.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
- * @route '/login'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
+* @route '/login'
+*/
 login.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -246,11 +254,12 @@ login.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: login.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::login
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
- * @route '/login'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:19
+* @route '/login'
+*/
 login.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -261,9 +270,9 @@ login.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
- * @route '/logout'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
+* @route '/logout'
+*/
 export const logout = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -279,18 +288,18 @@ logout.definition = {
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
- * @route '/logout'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
+* @route '/logout'
+*/
 logout.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return logout.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::logout
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
- * @route '/logout'
- */
+* @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:42
+* @route '/logout'
+*/
 logout.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -298,3 +307,4 @@ logout.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: logout.url(options),
     method: 'post',
 })
+

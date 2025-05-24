@@ -1,9 +1,9 @@
 import { queryParams, type QueryParams } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
- */
+* @see app/Http/Controllers/Admin/DashboardController.php:26
+* @route '/admin'
+*/
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -19,18 +19,18 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
- */
+* @see app/Http/Controllers/Admin/DashboardController.php:26
+* @route '/admin'
+*/
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
- */
+* @see app/Http/Controllers/Admin/DashboardController.php:26
+* @route '/admin'
+*/
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -38,11 +38,12 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Admin\DashboardController::index
- * @see app/Http/Controllers/Admin/DashboardController.php:26
- * @route '/admin'
- */
+* @see app/Http/Controllers/Admin/DashboardController.php:26
+* @route '/admin'
+*/
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -50,6 +51,7 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'head',
 })
+
 const DashboardController = { index }
 
 export default DashboardController

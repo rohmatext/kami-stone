@@ -1,9 +1,9 @@
 import { queryParams, type QueryParams } from './../../../../../wayfinder'
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:22
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:22
+* @route '/operator/shipments'
+*/
 export const index = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -19,18 +19,18 @@ index.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:22
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:22
+* @route '/operator/shipments'
+*/
 index.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return index.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:22
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:22
+* @route '/operator/shipments'
+*/
 index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'get',
@@ -38,11 +38,12 @@ index.get = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: index.url(options),
     method: 'get',
 })
+
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::index
- * @see app/Http/Controllers/Operator/ShipmentController.php:22
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:22
+* @route '/operator/shipments'
+*/
 index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'head',
@@ -53,9 +54,9 @@ index.head = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:32
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:32
+* @route '/operator/shipments'
+*/
 export const store = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -71,18 +72,18 @@ store.definition = {
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:32
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:32
+* @route '/operator/shipments'
+*/
 store.url = (options?: { query?: QueryParams, mergeQuery?: QueryParams }) => {
     return store.definition.url + queryParams(options)
 }
 
 /**
 * @see \App\Http\Controllers\Operator\ShipmentController::store
- * @see app/Http/Controllers/Operator/ShipmentController.php:32
- * @route '/operator/shipments'
- */
+* @see app/Http/Controllers/Operator/ShipmentController.php:32
+* @route '/operator/shipments'
+*/
 store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: string,
     method: 'post',
@@ -90,6 +91,7 @@ store.post = (options?: { query?: QueryParams, mergeQuery?: QueryParams }): {
     url: store.url(options),
     method: 'post',
 })
+
 const ShipmentController = { index, store }
 
 export default ShipmentController
