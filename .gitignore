@@ -23,5 +23,5 @@ yarn-error.log
 /.vscode
 /.zed
 
-/resources/js/routes
 /resources/js/actions
+/resources/js/routes
