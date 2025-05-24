@@ -81,7 +81,7 @@ const handleSubmit = () => {
                         <InputError :message="form.errors.type" />
                     </BlockStack>
                     <BlockStack class="gap-2">
-                        <Label for="quantity">Jumlah (karung)</Label>
+                        <Label for="quantity">Jumlah (kg)</Label>
                         <Input id="quantity" inputmode="numeric" v-model="form.quantity" />
                         <InputError :message="form.errors.quantity" />
                     </BlockStack>

@@ -90,7 +90,7 @@ watch(() => period, updatePeriod, { deep: true });
                     </CardHeader>
                     <CardContent>
                         <div class="text-2xl font-bold">{{ nf(props.total.productions - props.total.shipments) }}</div>
-                        <p class="text-muted-foreground text-xs">Karung</p>
+                        <p class="text-muted-foreground text-xs">Kilogram</p>
                     </CardContent>
                 </Card>
 

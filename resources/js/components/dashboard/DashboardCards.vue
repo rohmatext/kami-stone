@@ -29,7 +29,7 @@ const props = defineProps<{
                 </CardHeader>
                 <CardContent>
                     <div class="text-2xl font-bold">{{ nf(props.total.productions - props.total.shipments) }}</div>
-                    <p class="text-muted-foreground text-xs">Karung</p>
+                    <p class="text-muted-foreground text-xs">Kilogram</p>
                 </CardContent>
             </Card>
         </div>
@@ -44,7 +44,7 @@ const props = defineProps<{
                     <div class="text-2xl font-bold">
                         {{ nf(props.productions.map((production) => production.quantity).reduce((a, b) => a + b, 0)) }}
                     </div>
-                    <p class="text-muted-foreground text-xs">Karung</p>
+                    <p class="text-muted-foreground text-xs">Kilogram</p>
                 </CardContent>
             </Card>
         </div>
@@ -57,7 +57,7 @@ const props = defineProps<{
                 </CardHeader>
                 <CardContent>
                     <div class="text-2xl font-bold">{{ nf(props.total.shipments) }}</div>
-                    <p class="text-muted-foreground text-xs">Karung</p>
+                    <p class="text-muted-foreground text-xs">Kilogram</p>
                 </CardContent>
             </Card>
         </div>
@@ -69,7 +69,7 @@ const props = defineProps<{
                 </CardHeader>
                 <CardContent>
                     <div class="text-2xl font-bold">{{ nf(props.total.productions) }}</div>
-                    <p class="text-muted-foreground text-xs">Karung</p>
+                    <p class="text-muted-foreground text-xs">Kilogram</p>
                 </CardContent>
             </Card>
         </div>
