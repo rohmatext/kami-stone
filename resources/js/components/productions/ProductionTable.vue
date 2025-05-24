@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { ProductionTimeline } from '@/types/production';
+import { useDateFormat } from '@vueuse/core';
 import { ChevronDown, ChevronRight } from 'lucide-vue-next';
 import { ref } from 'vue';
 import { Badge } from '../ui/badge';
@@ -27,7 +28,7 @@ const isExpanded = ref<boolean[]>(props.productions.map(() => false));
                                 <ChevronDown class="size-4" v-if="isExpanded[index]" />
                                 <ChevronRight class="size-4" v-else />
                                 <span>
-                                    {{ row.date }}
+                                    {{ useDateFormat(row.date, 'DD MMMM YYYY', { locales: 'id' }) }}
                                 </span>
                             </div>
                         </TableCell>

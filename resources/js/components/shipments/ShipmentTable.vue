@@ -2,6 +2,7 @@
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableEmpty, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Shipment } from '@/types/shipment';
+import { useDateFormat } from '@vueuse/core';
 
 const props = defineProps<{ shipments: Shipment[] }>();
 </script>
@@ -18,7 +19,7 @@ const props = defineProps<{ shipments: Shipment[] }>();
             <template v-if="props.shipments.length > 0">
                 <TableRow v-for="shipment in props.shipments" :key="shipment.id">
                     <TableCell class="font-medium">
-                        {{ shipment.shipment_date }}
+                        {{ useDateFormat(shipment.shipment_date, 'DD MMMM YYYY', { locales: 'id' }) }}
                     </TableCell>
                     <TableCell class="text-right">
                         <Badge variant="outline">
